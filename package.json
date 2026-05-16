@@ -1,0 +1,23 @@
+{
+  "name": "eucalyptus",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "worker:deploy": "ntn workers deploy",
+    "worker:exec:local": "ntn workers exec logLumaEmailHello --local -d '{\"from\":\"events@luma.com\",\"subject\":\"Luma event\",\"bodyPreview\":\"https://lu.ma/demo\",\"messageId\":\"demo-message\",\"emailUrl\":null}'"
+  },
+  "dependencies": {
+    "@notionhq/workers": "0.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.8.0",
+    "typescript": "6.0.3"
+  }
+}
