@@ -1,4 +1,6 @@
-# eucalyptus
+# Eucalyptus - Life Coach
+
+![Eucalyptus Life Coach](docs/assets/eucalyptus-life-coach.png)
 
 Notion Worker prototype for detecting Luma-related mail received through a Notion Custom Agent Mail trigger.
 
