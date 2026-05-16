@@ -5,7 +5,9 @@ import { handleLumaMailSignal } from "./luma-mail.ts";
 
 const worker = new Worker();
 
-export default worker;
+// ntn v0.14.0 local execution invokes mod.default.default.run(...).
+// Keep this wrapper at the entrypoint and keep Worker logic in modules below.
+export default { default: worker };
 
 worker.tool("logLumaEmailHello", {
   title: "Log Luma Email Hello",
@@ -46,4 +48,3 @@ worker.tool("logLumaEmailHello", {
   hints: { readOnlyHint: true },
   execute: async (signal) => handleLumaMailSignal(signal),
 });
-
