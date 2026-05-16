@@ -8,6 +8,7 @@
     "npm": ">=10"
   },
   "scripts": {
+    "build": "npm run typecheck",
     "test": "node --test test/*.test.ts",
     "typecheck": "tsc --noEmit",
     "worker:deploy": "ntn workers deploy",
