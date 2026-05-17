@@ -1,0 +1,29 @@
+{
+  "name": "eucalyptus",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "build": "npm run typecheck && npm run build:worker",
+    "build:worker": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && node_modules/.bin/esbuild src/index.ts --bundle --platform=node --format=esm --target=node22 --packages=external --outfile=dist/index.js",
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "worker:config": "node scripts/generate-workers-config.mjs",
+    "worker:deploy": "set -a; [ ! -f .env.local ] || . ./.env.local; set +a; npm run worker:config && ntn workers deploy --workers-config-file ${NOTION_WORKERS_CONFIG_FILE:-.local/workers.json}",
+    "worker:exec:local": "ntn workers exec processLumaEmailSignal --local -d '{\"from\":\"events@luma.com\",\"subject\":\"Luma event\",\"bodyPreview\":\"https://lu.ma/demo\",\"messageId\":\"demo-message\",\"emailUrl\":null}'"
+  },
+  "dependencies": {
+    "@notionhq/workers": "0.4.0",
+    "openai": "^6.38.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.8.0",
+    "esbuild": "^0.28.0",
+    "tsx": "^4.22.0",
+    "typescript": "6.0.3"
+  }
+}

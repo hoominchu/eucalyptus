@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Eucalyptus",
+    "slug": "eucalyptus",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.hoominchu.eucalyptus",
+      "infoPlist": {
+        "NSLocalNetworkUsageDescription": "Eucalyptus sends your Health data to a server on your local network.",
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true
+        }
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.hoominchu.eucalyptus"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "@kingstinct/react-native-healthkit",
+        {
+          "healthSharePermission": "Eucalyptus reads your workouts and health metrics so it can sync them to your private server."
+        }
+      ]
+    ]
+  }
+}
